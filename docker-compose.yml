@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Laravel Backend (PHP-FPM)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    volumes:
+      - ./backend:/var/www/html
+      - ./backend/storage/uploads:/var/www/html/storage/uploads
+    networks:
+      - local-network
+    expose:
+      - "9000"
+
+  # NGINX Reverse Proxy
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+    networks:
+      - local-network
+
+networks:
+  local-network:
+    driver: bridge
+
+volumes:
+  etcd_data:
+    driver: local
