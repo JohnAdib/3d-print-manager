@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
 import Swal from 'sweetalert2'
 import byteSize from 'byte-size'
-import { FILE_SIZE_LIMIT } from '../config/constants'
+import { FILE_SIZE_LIMIT } from '@/config/constants'
 
 export interface FileItem {
   id: string
