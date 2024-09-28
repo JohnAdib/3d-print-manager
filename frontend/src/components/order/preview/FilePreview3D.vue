@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { useThreeJS } from '@/composables/useThreeJS'
 import { PlayIcon, PauseIcon } from '@heroicons/vue/16/solid'
 

@@ -87,21 +87,23 @@
                 and in the code. Hope you like it!
               </p>
             </blockquote>
-            <a
-              class="mt-8 flex gap-x-4 items-center select-none"
-              href="https://mradib.com"
-              target="_blank"
-            >
-              <img
-                src="https://mradib.com/email/mradib-avatar.jpg"
-                alt=""
-                class="mt-1 h-10 w-10 flex-none rounded-full bg-gray-50"
-              />
-              <figcaption class="text-sm leading-5">
-                <div class="font-semibold text-gray-900">John Adib</div>
-                <div class="text-gray-600">@mradib</div>
-              </figcaption>
-            </a>
+            <figcaption>
+              <a
+                class="mt-8 flex gap-x-4 items-center select-none"
+                href="https://mradib.com"
+                target="_blank"
+              >
+                <img
+                  src="https://mradib.com/email/mradib-avatar.jpg"
+                  alt=""
+                  class="mt-1 h-10 w-10 flex-none rounded-full bg-gray-50"
+                />
+                <div class="text-sm leading-5">
+                  <div class="font-semibold text-gray-900">John Adib</div>
+                  <div class="text-gray-600">@mradib</div>
+                </div>
+              </a>
+            </figcaption>
           </figure>
         </div>
 

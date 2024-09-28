@@ -34,7 +34,6 @@
 </template>
 
 <script setup type="ts">
-import { defineProps } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -43,7 +42,7 @@ import {
 } from '@headlessui/vue'
 import ProjectForm from './SubmitProjectForm.vue'
 
-const props = defineProps({
+defineProps({
   open: {
     type: Boolean,
     required: true
