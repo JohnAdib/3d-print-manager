@@ -59,14 +59,8 @@ export const useFileStore = defineStore('fileStore', {
         uploadAt: new Date(),
         id: `${file.name}-${Date.now()}`
       }
-      console.log('file is ....', file)
 
       this.files.push(newFile)
-
-      console.log('Session ID:', this.sessionId)
-      console.log('File added:', newFile)
-      console.log('Current file list:', this.files)
-      console.log('Total files:', this.totalFiles)
     },
 
     addFiles(files: File[]) {
@@ -76,15 +70,11 @@ export const useFileStore = defineStore('fileStore', {
     },
 
     removeFile(id: string) {
-      console.log('Attempting to remove file with ID:', id)
       this.files = this.files.filter((item) => item.id !== id)
-      console.log('File removed. Current file list:', this.files)
     },
 
     clearFiles() {
-      console.log('Clearing all files.')
       this.files = []
-      console.log('All files cleared. Current file list:', this.files)
     }
   }
 })
