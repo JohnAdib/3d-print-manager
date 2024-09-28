@@ -40,10 +40,7 @@ import { useDragAndDrop } from '@/composables/useDragAndDrop'
 import { useFileStore } from '@/store/fileStore'
 import { FILE_SIZE_LIMIT } from '@/config/constants'
 
-// Accessing Pinia store directly
 const fileStore = useFileStore()
-
-// Access the reactive totalFiles count directly from the store
 const totalFiles = computed(() => fileStore.totalFiles)
 
 const { dragging } = useDragAndDrop({

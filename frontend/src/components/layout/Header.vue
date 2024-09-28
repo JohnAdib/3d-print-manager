@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 
-// Define the header links
 const headerLinks = [
   { href: '/', label: 'Homepage' },
   { href: '/order', label: 'Order' },
