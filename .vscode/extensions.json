@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "ryannaddy.laravel-artisan",
+    "mikestead.dotenv",
+    "onecentlin.laravel5-snippets",
+    "esbenp.prettier-vscode"
+  ]
+}

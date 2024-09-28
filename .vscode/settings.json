@@ -1,0 +1,25 @@
+{
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/package-lock.json": true,
+    "**/dist": true
+  },
+  "editor.rulers": [80, 100, 120],
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.formatDocument": "explicit",
+    "source.addMissingImports": "explicit",
+    // "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  // required to format on save
+  "editor.formatOnSaveMode": "file",
+  "eslint.format.enable": true,
+  "files.autoSave": "onFocusChange",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
