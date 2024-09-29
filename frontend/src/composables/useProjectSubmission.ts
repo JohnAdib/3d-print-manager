@@ -1,61 +1,24 @@
-// composables/useProjectSubmission.ts
 import { ref, computed } from 'vue'
 import { useFileStore } from '@/store/fileStore'
 import { useSubmissionDrawer } from '@/composables/useSubmissionDrawer'
 import type { IProjectSubmissionForm } from '@/interfaces'
+import { fetchWithErrorHandling } from '@/utils/fetch/fetch-with-error-handling'
+import { uploadFiles } from '@/utils/fetch/upload-files'
 
 export function useProjectSubmission() {
   const fileStore = useFileStore()
   const isSaving = ref(false)
 
-  // Call the useSubmissionDrawer composable
   const { closeSubmissionDrawer } = useSubmissionDrawer()
 
   const saveProject = async (formData: IProjectSubmissionForm) => {
-    try {
-      const response = await fetch('/api/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to save project')
-      }
-
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error('Error saving project:', error)
-      throw error
-    }
-  }
-
-  const uploadFiles = async (projectId: string, files: File[]) => {
-    const formData = new FormData()
-
-    files.forEach((file) => {
-      formData.append('files[]', file)
+    return await fetchWithErrorHandling('/api/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     })
-
-    try {
-      const response = await fetch(`/api/projects/${projectId}/upload-files`, {
-        method: 'POST',
-        body: formData
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to upload files')
-      }
-
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error('Error uploading files:', error)
-      throw error
-    }
   }
 
   const handleSaveProject = async (formData: IProjectSubmissionForm) => {
@@ -73,7 +36,7 @@ export function useProjectSubmission() {
 
       console.log('Project and files saved successfully')
 
-      // Close the drawer on success using useSubmissionDrawer
+      // Close the drawer on success
       closeSubmissionDrawer()
     } catch (error) {
       console.error('Error during project submission:', error)
