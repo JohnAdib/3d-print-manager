@@ -10,6 +10,8 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       fail-fast: true
       matrix:
@@ -35,7 +37,6 @@ jobs:
         run: pint
 
       - name: Commit linted files
-        working-directory: ./backend
         uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Fixes coding style"
+        # with:
+        #   commit_message: "Fixes coding style"

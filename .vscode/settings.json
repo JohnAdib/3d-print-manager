@@ -30,5 +30,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
   }
 }
