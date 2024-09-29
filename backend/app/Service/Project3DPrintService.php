@@ -22,15 +22,16 @@ class Project3DPrintService
         array $projectData,
         array $files
     ): array {
-        $projectFolder = "3d_print/{$projectData['uid']}";
+        $projectData['type'] = '3d_print';
+        $projectData['folder'] = $projectData['type'] . '/' . $projectData['uid'];
+        $projectData['dataPath'] = $projectData['folder'] . '/data.json';
 
-        $filePaths = $this->uploadService->uploadFiles(
+        $filePaths = $this->uploadService->uploadMultipleFiles(
             $files,
-            $projectFolder
+            $projectData['folder']
         );
 
         $projectData['files'] = $filePaths;
-
         $this->projectRepository->saveProjectWithFiles($projectData);
 
         return $projectData;

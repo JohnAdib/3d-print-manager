@@ -2,23 +2,29 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\Storage;
+use App\Services\DataStorageService;
 
 class Project3DPrintRepository
 {
+    protected $dataStorageService;
+
+    public function __construct(DataStorageService $dataStorageService)
+    {
+        $this->dataStorageService = $dataStorageService;
+    }
+
     public function saveProjectWithFiles(array $projectData): void
     {
-        $projectFolder = "3d_print/{$projectData['uid']}";
-
-        Storage::disk('local')->makeDirectory($projectFolder);
-
-        $jsonFilePath = "{$projectFolder}/project_{$projectData['uid']}.json";
-        Storage::disk('local')->put(
-            $jsonFilePath,
-            json_encode(
-                $projectData,
-                JSON_PRETTY_PRINT
-            )
+        $this->dataStorageService->storeData(
+            $projectData,
+            $projectData['dataPath'],
+            'local',
         );
+
+        // TODO: Save project to database
+        // This is a placeholder for the actual database save
+        // for the MVP, we are only storing the data.json file
+        // as there was no requirement to store the project in the database!
+
     }
 }

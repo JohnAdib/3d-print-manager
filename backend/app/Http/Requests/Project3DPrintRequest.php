@@ -12,9 +12,9 @@ class Project3DPrintRequest extends FormRequest
 
         return [
             'uid' => 'required|string|uuid',
-            'name' => 'nullable|string|max:255',
+            'name' => 'nullable|string|max:100',
             'email' => 'nullable|email|max:255',
-            'projectName' => 'nullable|string|max:255',
+            'projectName' => 'nullable|string|max:100',
             'description' => 'nullable|string|max:2000',
             'files' => 'required|array',
             'files.*' => "required|file|max:{$maxFileSize}",
