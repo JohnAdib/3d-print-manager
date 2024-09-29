@@ -1,7 +1,7 @@
-import type { IProjectSubmissionForm } from './i-project-submission-form'
-import type { IUploadedFile } from './i-uploaded-file'
+import type { IProjectData } from './i-project-data'
+import type { IProjectFile } from './i-project-file'
 
 export interface IProjectWithFilesPayload {
-  formData: IProjectSubmissionForm
-  files: IUploadedFile[]
+  formData: IProjectData
+  files: IProjectFile[]
 }

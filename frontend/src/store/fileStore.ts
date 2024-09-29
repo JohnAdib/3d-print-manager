@@ -1,14 +1,12 @@
 import { defineStore } from 'pinia'
-import { v4 as uuidv4 } from 'uuid'
 import byteSize from 'byte-size'
 import { validateFileSize } from '@/utils/validate/file-size'
 import { validateFileExtension } from '@/utils/validate/file-extension'
-import type { IUploadedFile } from '@/interfaces'
+import type { IProjectFile } from '@/interfaces'
 
 export const useFileStore = defineStore('fileStore', {
   state: () => ({
-    files: [] as IUploadedFile[],
-    sessionId: uuidv4()
+    files: [] as IProjectFile[]
   }),
 
   getters: {
@@ -29,7 +27,7 @@ export const useFileStore = defineStore('fileStore', {
 
       const fileSizeObj = byteSize(file.size)
 
-      const newFile: IUploadedFile = {
+      const newFile: IProjectFile = {
         file,
         name: file.name,
         size: fileSizeObj.toString(),

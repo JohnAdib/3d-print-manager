@@ -1,4 +1,5 @@
-export interface IProjectSubmissionForm {
+export interface IProjectData {
+  uid: string
   name: string
   email: string
   projectName: string

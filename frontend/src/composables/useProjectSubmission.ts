@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { useFileStore } from '@/store/fileStore'
 import { useSubmissionDrawer } from '@/composables/useSubmissionDrawer'
-import type { IProjectSubmissionForm } from '@/interfaces'
+import type { IProjectData } from '@/interfaces'
 import { sendProjectWithFiles } from '@/utils/fetch/send-project-with-files'
 
 export function useProjectSubmission() {
@@ -10,7 +10,7 @@ export function useProjectSubmission() {
 
   const { closeSubmissionDrawer } = useSubmissionDrawer()
 
-  const handleSaveProject = async (formData: IProjectSubmissionForm) => {
+  const handleSaveProject = async (formData: IProjectData) => {
     isSaving.value = true
 
     try {

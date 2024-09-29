@@ -118,11 +118,13 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { type IProjectSubmissionForm } from '@/interfaces'
+import { v4 as uuidv4 } from 'uuid'
+import { type IProjectData } from '@/interfaces'
 
 const emit = defineEmits(['save', 'cancel'])
 
-const formData: IProjectSubmissionForm = reactive({
+const formData: IProjectData = reactive({
+  uid: uuidv4(),
   name: '',
   email: '',
   projectName: '',
