@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup type="ts">
 import { defineEmits } from 'vue'
 
 const props = defineProps({

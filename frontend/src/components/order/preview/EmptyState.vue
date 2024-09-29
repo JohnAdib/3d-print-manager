@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<script>
+<script type="ts">
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
 
 export default {

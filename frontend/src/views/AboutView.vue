@@ -232,7 +232,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup type="ts">
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
