@@ -3,4 +3,5 @@ parameters:
   paths:
     - app
     - database
+    - routes
     - tests
