@@ -10,14 +10,17 @@ export function useProjectSubmission() {
 
   const { closeSubmissionDrawer } = useSubmissionDrawer()
 
-  const handleSaveProject = async (formData: IProjectData) => {
+  const handleSaveProject = async (projectData: IProjectData) => {
     isSaving.value = true
 
     try {
       const files = computed(() => fileStore.files)
 
       // Send project data and files in one request
-      await sendProjectWithFiles({ formData, files: files.value })
+      await sendProjectWithFiles({
+        projectData,
+        projectFiles: files.value
+      })
       console.log('Project and files uploaded successfully')
 
       closeSubmissionDrawer()
