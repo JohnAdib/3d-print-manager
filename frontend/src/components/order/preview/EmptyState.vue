@@ -8,36 +8,14 @@
           our service is trusted across industries:
         </p>
         <ul class="space-y-4">
-          <li class="flex items-center">
+          <li
+            v-for="(item, index) in benefits"
+            :key="index"
+            class="flex items-center"
+          >
             <CheckCircleIcon class="h-6 w-6 flex-none text-sky-500" />
             <p class="ml-4">
-              <b>Fast Turnaround:</b> Get your parts in as little as 3 days.
-            </p>
-          </li>
-          <li class="flex items-center">
-            <CheckCircleIcon class="h-6 w-6 flex-none text-sky-500" />
-            <p class="ml-4">
-              <b>Complex Geometry:</b> Print intricate designs with ease.
-            </p>
-          </li>
-          <li class="flex items-center">
-            <CheckCircleIcon class="h-6 w-6 flex-none text-sky-500" />
-            <p class="ml-4">
-              <b>Precision:</b> High accuracy with tolerances of +/- 0.127mm.
-            </p>
-          </li>
-          <li class="flex items-center">
-            <CheckCircleIcon class="h-6 w-6 flex-none text-sky-500" />
-            <p class="ml-4">
-              <b>Industry Expertise:</b> Trusted by aerospace, automotive, and
-              more.
-            </p>
-          </li>
-          <li class="flex items-center">
-            <CheckCircleIcon class="h-6 w-6 flex-none text-sky-500" />
-            <p class="ml-4">
-              <b>Wide Material Range:</b> Access top-quality plastic and metal
-              options.
+              <b>{{ item.title }}:</b> {{ item.description }}
             </p>
           </li>
         </ul>
@@ -46,12 +24,29 @@
   </div>
 </template>
 
-<script type="ts">
+<script setup lang="ts">
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
 
-export default {
-  components: {
-    CheckCircleIcon
+const benefits = [
+  {
+    title: 'Fast Turnaround',
+    description: 'Get your parts in as little as 3 days.'
+  },
+  {
+    title: 'Complex Geometry',
+    description: 'Print intricate designs with ease.'
+  },
+  {
+    title: 'Precision',
+    description: 'High accuracy with tolerances of +/- 0.127mm.'
+  },
+  {
+    title: 'Industry Expertise',
+    description: 'Trusted by aerospace, automotive, and more.'
+  },
+  {
+    title: 'Wide Material Range',
+    description: 'Access top-quality plastic and metal options.'
   }
-}
+]
 </script>
