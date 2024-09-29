@@ -118,7 +118,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { IProjectSubmissionForm } from '@/interfaces'
+import { type IProjectSubmissionForm } from '@/interfaces'
 
 const emit = defineEmits(['save', 'cancel'])
 

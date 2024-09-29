@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import byteSize from 'byte-size'
 import { validateFileSize } from '@/utils/validate/file-size'
 import { validateFileExtension } from '@/utils/validate/file-extension'
-import type { IUploadedFile } from '@/interfaces/i-uploaded-file'
+import type { IUploadedFile } from '@/interfaces'
 
 export const useFileStore = defineStore('fileStore', {
   state: () => ({

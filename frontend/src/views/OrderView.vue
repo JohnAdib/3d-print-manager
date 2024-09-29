@@ -4,32 +4,22 @@ import FileUpload from '@/components/order/file-uploader/FileUpload.vue'
 import PageHeader from '@/components/order/preview/PageHeader.vue'
 import FilesPreview from '@/components/order/preview/FilesPreview.vue'
 import DrawerSubmission from '@/components/order/drawer/DrawerSubmission.vue'
+import type { IProjectSubmissionForm } from '@/interfaces'
 
-const selectedFiles = ref([])
-
-// Control the open status for the SubmitProject drawer
-const isSubmitProjectOpen = ref(false)
-
-const handleFilesSelected = (files) => {
-  selectedFiles.value = files
-}
-
-const handleSubmit = (files) => {
-  console.log('Submitting files:', files)
-}
+const isSubmissionDrawerOpen = ref(false)
 
 // Open the SubmitProject drawer
 const openSubmissionDrawer = () => {
-  isSubmitProjectOpen.value = true
+  isSubmissionDrawerOpen.value = true
 }
 
 // Close the SubmitProject drawer
 const closeSubmissionDrawer = () => {
-  isSubmitProjectOpen.value = false
+  isSubmissionDrawerOpen.value = false
 }
 
 // Handle form submission (save event)
-const handleSaveProject = (formData) => {
+const handleSaveProject = (formData: IProjectSubmissionForm) => {
   console.log('Form data saved:', formData)
   // Add your save logic here (e.g., send formData to the server)
   closeSubmissionDrawer()
@@ -43,7 +33,7 @@ const handleSaveProject = (formData) => {
     <FilesPreview />
 
     <DrawerSubmission
-      :open="isSubmitProjectOpen"
+      :open="isSubmissionDrawerOpen"
       @close="closeSubmissionDrawer"
       @save="handleSaveProject"
     />
