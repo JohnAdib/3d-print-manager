@@ -8,7 +8,7 @@
     @click="toggleAnimation"
   >
     <button class="absolute top-1 right-1 bg-white/20 p-1 rounded-full">
-      <PlayIcon v-if="animationPaused" class="h-4 w-4 text-gray-600" />
+      <PlayIcon v-if="isAnimationPaused" class="h-4 w-4 text-gray-600" />
       <PauseIcon v-else class="h-4 w-4 text-gray-600" />
     </button>
   </div>
@@ -27,6 +27,6 @@ const {
   startRotation,
   stopRotation,
   toggleAnimation,
-  animationPaused
+  isAnimationPaused
 } = useThreeJS({ file: props.file })
 </script>
