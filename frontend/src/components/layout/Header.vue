@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
 const headerLinks = [
   { href: '/', label: 'Homepage' },
   { href: '/order', label: 'Order' },
   { href: '/about', label: 'About' }
 ]
+
+const route = useRoute()
+const isActiveLink = (href: string) => route.path === href
 </script>
 
 <template>
@@ -31,6 +34,9 @@ const headerLinks = [
           :key="link.href"
           :to="link.href"
           :ariaLabel="link.label"
+          :class="
+            isActiveLink(link.href) ? 'text-sky-600' : 'hover:text-sky-700'
+          "
           class="transition hover:text-sky-700"
         >
           {{ link.label }}
