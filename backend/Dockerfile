@@ -21,6 +21,9 @@ RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 # Set working directory
 WORKDIR /var/www/backend
 
+# Copy the custom php.ini
+COPY .docker/php/php.ini /usr/local/etc/php/conf.d/custom-php.ini
+
 # Copy composer.json and install dependencies
 COPY composer.json composer.lock ./
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

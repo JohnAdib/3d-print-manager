@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\JsonResponse;
 
 class Project3DController extends Controller
 {
-    public function save(Request $request)
+    public function save(Request $request): JsonResponse
     {
         // Validate the incoming request
         $request->validate([

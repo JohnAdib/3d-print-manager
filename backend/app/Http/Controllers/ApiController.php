@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+
 class ApiController extends Controller
 {
-    public function root()
+    public function root(): JsonResponse
     {
         return response()->json([
             'okay' => true,
@@ -16,7 +18,7 @@ class ApiController extends Controller
         ]);
     }
 
-    public function v1()
+    public function v1(): JsonResponse
     {
         return response()->json([
             'okay' => true,

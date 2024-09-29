@@ -24,6 +24,8 @@ services:
       - APP_URL=http://localhost
     volumes:
       - ./backend:/var/www/backend
+      - ./backend/storage/uploads:/var/www/html/storage/uploads
+      - ./backend/.docker/php/php.ini:/usr/local/etc/php/conf.d/custom-php.ini
     networks:
       - local-network
     ports:
