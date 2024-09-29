@@ -4,13 +4,11 @@ import PageHeader from '@/components/order/preview/PageHeader.vue'
 import FilesPreview from '@/components/order/preview/FilesPreview.vue'
 import DrawerSubmission from '@/components/order/drawer/DrawerSubmission.vue'
 import { useProjectSubmission } from '@/composables/useProjectSubmission'
+import { useSubmissionDrawer } from '@/composables/useSubmissionDrawer'
 
-const {
-  isSubmissionDrawerOpen,
-  openSubmissionDrawer,
-  closeSubmissionDrawer,
-  handleSaveProject
-} = useProjectSubmission()
+const { handleSaveProject } = useProjectSubmission()
+const { isSubmissionDrawerOpen, openSubmissionDrawer, closeSubmissionDrawer } =
+  useSubmissionDrawer()
 </script>
 
 <template>
