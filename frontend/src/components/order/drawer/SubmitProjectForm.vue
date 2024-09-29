@@ -91,24 +91,24 @@
                 name="description"
                 maxlength="1000"
                 placeholder="Please provide a any additional information you'd like to share, we'd be sure to read it."
-                class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 min-h-40 max-h-96"
+                class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 min-h-36 max-h-96"
               />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex flex-shrink-0 justify-end px-4 py-4">
+    <div class="flex flex-shrink-0 justify-between px-4 py-4 select-none">
       <button
         type="button"
-        class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        class="rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-50 hover:ring-gray-300 hover:bg-gray-50 transition"
         @click="$emit('cancel')"
       >
         Cancel
       </button>
       <button
         type="submit"
-        class="ml-4 inline-flex justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500"
+        class="ml-4 inline-flex justify-center rounded-md bg-sky-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 transition"
       >
         Save
       </button>
