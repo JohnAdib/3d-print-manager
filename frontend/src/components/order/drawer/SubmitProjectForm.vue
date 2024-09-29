@@ -102,7 +102,7 @@
       <button
         type="button"
         class="rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-50 hover:ring-gray-300 hover:bg-gray-50 transition"
-        @click="$emit('cancel')"
+        @click="drawerStore.closeDrawer"
       >
         Cancel
       </button>
@@ -120,8 +120,11 @@
 import { reactive } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { type IProjectData } from '@/interfaces'
+import { useProjectSubmission } from '@/composables/useProjectSubmission'
+import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
 
-const emit = defineEmits(['save', 'cancel'])
+const drawerStore = useProjectSubmissionDrawer()
+const { handleSaveProject } = useProjectSubmission()
 
 const formData: IProjectData = reactive({
   uid: uuidv4(),
@@ -132,6 +135,6 @@ const formData: IProjectData = reactive({
 })
 
 const handleSubmit = () => {
-  emit('save', formData)
+  handleSaveProject(formData)
 }
 </script>

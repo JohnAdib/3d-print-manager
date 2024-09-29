@@ -1,6 +1,6 @@
 <template>
-  <TransitionRoot as="template" :show="open">
-    <Dialog class="relative z-10" @close="$emit('close')">
+  <TransitionRoot as="template" :show="drawerStatus">
+    <Dialog class="relative z-10" @close="drawerStore.closeDrawer">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">
@@ -21,8 +21,8 @@
             >
               <DialogPanel class="pointer-events-auto w-screen max-w-md">
                 <ProjectForm
-                  @cancel="$emit('close')"
-                  @save="$emit('save', $event)"
+                  @cancel="drawerStore.closeDrawer"
+                  @save="drawerStore.openDrawer"
                 />
               </DialogPanel>
             </TransitionChild>
@@ -41,11 +41,9 @@ import {
   TransitionRoot
 } from '@headlessui/vue'
 import ProjectForm from './SubmitProjectForm.vue'
+import { computed } from 'vue'
+import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
 
-defineProps({
-  open: {
-    type: Boolean,
-    required: true
-  }
-})
+const drawerStore = useProjectSubmissionDrawer()
+const drawerStatus = computed(() => drawerStore.getDrawerStatus)
 </script>

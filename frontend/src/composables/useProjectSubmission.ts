@@ -1,15 +1,15 @@
 import { ref, computed } from 'vue'
 import { useFileStore } from '@/store/fileStore'
-import { useSubmissionDrawer } from '@/composables/useSubmissionDrawer'
 import type { IProjectData } from '@/interfaces'
 import { sendProjectWithFiles } from '@/utils/server/send-project-with-files'
 import { showAlert } from '@/utils/alert/show-alert'
+import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
 
 export function useProjectSubmission() {
   const fileStore = useFileStore()
   const isSaving = ref(false)
 
-  const { closeSubmissionDrawer } = useSubmissionDrawer()
+  const { closeDrawer } = useProjectSubmissionDrawer()
 
   const handleSaveProject = async (projectData: IProjectData) => {
     isSaving.value = true
@@ -17,7 +17,6 @@ export function useProjectSubmission() {
     try {
       const files = computed(() => fileStore.files)
 
-      // Send project data and files in one request
       await sendProjectWithFiles({
         projectData,
         projectFiles: files.value
@@ -29,7 +28,8 @@ export function useProjectSubmission() {
         icon: 'success'
       })
 
-      closeSubmissionDrawer()
+      closeDrawer()
+      fileStore.clearFiles()
     } catch (error) {
       console.error('Error during project submission:', error)
     } finally {

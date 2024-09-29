@@ -1,4 +1,3 @@
-// utils/alerts/showAlert.ts
 import Swal, { type SweetAlertOptions } from 'sweetalert2'
 
 interface ShowAlertParams {
