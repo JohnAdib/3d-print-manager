@@ -8,6 +8,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/dist:/usr/share/nginx/html
     depends_on:
       - backend
       - ui
@@ -36,11 +37,11 @@ services:
       dockerfile: Dockerfile
     container_name: ui
     volumes:
-      - ./frontend/dist:/usr/share/nginx/html
+      - ./frontend:/app
     expose:
-      - "4011"
+      - "5173"
     ports:
-      - "4011:80"
+      - "5173:5173"
     networks:
       - local-network
 

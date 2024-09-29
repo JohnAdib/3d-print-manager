@@ -16,17 +16,13 @@ COPY . .
 # Build the application for production
 RUN npm run build
 
-# Stage 2: Serve the app with Nginx
-FROM nginx:alpine
+# Stage 2: Serve the app with an external Nginx (no need for Nginx here)
+FROM node:lts-alpine
 
-# Remove default Nginx HTML files
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app
 
-# Copy the built files from the previous stage
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /app/dist
 
-# Expose port 80 to the Docker host
-EXPOSE 80
+# No need to expose ports here; Nginx will serve it
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "-c", "echo 'Build Complete. Serve via Nginx.'"]
