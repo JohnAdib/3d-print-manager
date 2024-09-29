@@ -1,20 +1,13 @@
 import { defineStore } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
-import Swal from 'sweetalert2'
 import byteSize from 'byte-size'
-import { FILE_SIZE_LIMIT } from '@/config/constants'
-
-export interface FileItem {
-  id: string
-  file: File
-  name: string
-  size: string
-  uploadAt: Date
-}
+import { validateFileSize } from '@/utils/validate/file-size'
+import { validateFileExtension } from '@/utils/validate/file-extension'
+import type { IUploadedFile } from '@/interfaces/i-uploaded-file'
 
 export const useFileStore = defineStore('fileStore', {
   state: () => ({
-    files: [] as FileItem[],
+    files: [] as IUploadedFile[],
     sessionId: uuidv4()
   }),
 
@@ -26,33 +19,17 @@ export const useFileStore = defineStore('fileStore', {
 
   actions: {
     addFile(file: File) {
-      const maxSizeMB: number = FILE_SIZE_LIMIT
-      const fileSizeMB: number = file.size / 1024 / 1024
-      const fileSizeMBRounded: number = Math.round(fileSizeMB * 100) / 100
-
-      if (fileSizeMB > maxSizeMB) {
-        Swal.fire({
-          title: 'Error - File Size Exceeded',
-          text: `File "${file.name}" exceeds the size limit of ${maxSizeMB}MB. The file size is ${fileSizeMBRounded}MB.`,
-          icon: 'error',
-          confirmButtonText: 'OK'
-        })
+      if (!validateFileSize(file)) {
         return
       }
 
-      const fileExtension = file.name.split('.').pop()?.toLowerCase()
-      if (fileExtension !== 'stl') {
-        Swal.fire({
-          title: 'Error - File Type Not Supported',
-          text: `File "${file.name}" is not supported. We only support .STL files. You uploaded a "${fileExtension}" file.`,
-          icon: 'error',
-          confirmButtonText: 'OK'
-        })
+      if (!validateFileExtension(file)) {
         return
       }
+
       const fileSizeObj = byteSize(file.size)
 
-      const newFile: FileItem = {
+      const newFile: IUploadedFile = {
         file,
         name: file.name,
         size: fileSizeObj.toString(),
