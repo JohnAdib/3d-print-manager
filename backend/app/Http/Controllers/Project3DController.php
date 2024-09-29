@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class Project3DController extends Controller
+{
+    public function save(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'uid' => 'required|string|uuid',
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'projectName' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:2000',
+            // Validate each file, max size 20MB
+            'files.*' => 'required|file|max:20480',
+        ]);
+
+        // Collect additional project data
+        $projectData = [
+            'uid' => $request->input('uid'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'projectName' => $request->input('projectName'),
+            'description' => $request->input('description'),
+        ];
+
+        $filePaths = [];
+
+
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $file) {
+                // Store each file in the 'uploads' directory inside 'storage/app/public'
+                $path = $file->store('uploads', 'public');
+                $filePaths[] = $path;
+            }
+        }
+
+        // Return a success response with project data and file paths
+        return response()->json([
+            'message' => 'Project and files uploaded successfully',
+            'projectData' => $projectData,
+            'filePaths' => $filePaths,
+        ], 201);
+    }
+}

@@ -19,7 +19,7 @@ export async function sendProjectWithFiles({
     formDataToSend.append('files[]', uploadedFile.file)
   })
 
-  const apiUrl = API_V1_PATH + '3d-project'
+  const apiUrl = API_V1_PATH + 'project-3d'
   return await fetchWithErrorHandling(apiUrl, {
     method: 'POST',
     body: formDataToSend
