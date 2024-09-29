@@ -4,7 +4,13 @@
   },
   "search.exclude": {
     "**/package-lock.json": true,
-    "**/dist": true
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/backend/storage": true,
+    "**/backend/bootstrap": true,
+    "**/composer.lock": true,
+
+    "**/vendor": true
   },
   "editor.rulers": [80, 100, 120],
   "files.trimTrailingWhitespace": true,

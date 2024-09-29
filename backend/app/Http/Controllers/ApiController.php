@@ -10,7 +10,7 @@ class ApiController extends Controller
     {
         return response()->json([
             'okay' => true,
-            'message' => 'Welcome to the API',
+            'message' => 'Welcome to the API! this is the root endpoint',
             'result' => [
                 'version' => 1,
                 'update' => now()->toDateTimeString(),
@@ -22,7 +22,7 @@ class ApiController extends Controller
     {
         return response()->json([
             'okay' => true,
-            'message' => 'All good',
+            'message' => 'All good! this is the v1 endpoint',
             'result' => [
                 'version' => 1,
                 'update' => now()->toDateTimeString(),

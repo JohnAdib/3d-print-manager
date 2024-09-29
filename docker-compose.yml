@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  # Backend (PHP-FPM for Laravel)
+  # Laravel Backend (PHP-FPM)
   backend:
     build:
       context: ./backend
@@ -14,16 +14,18 @@ services:
       - local-network
     expose:
       - "9000"
+    ports:
+      - "9001:9000" # Expose backend on port 9001
 
-  # NGINX Reverse Proxy for backend and frontend
+  # Nginx Reverse Proxy (if needed later)
   nginx:
     image: nginx:alpine
     container_name: nginx_proxy
     ports:
-      - "8000:80" # Exposing Nginx on port 8000
+      - "8000:80"
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # Nginx config file
-      - ./frontend/dist:/usr/share/nginx/html # Serving built Vue.js app
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/dist:/usr/share/nginx/html # Vue.js built files
     depends_on:
       - backend
       - frontend
