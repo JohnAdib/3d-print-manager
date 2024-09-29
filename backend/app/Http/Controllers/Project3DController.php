@@ -33,10 +33,20 @@ class Project3DController extends Controller
         $filePaths = [];
 
         if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $file) {
-                // Store each file in the 'uploads' directory inside 'storage/app/public'
-                $path = $file->store('uploads', 'public');
-                $filePaths[] = $path;
+            // Get files from the request
+            $files = $request->file('files');
+
+            // Ensure $files is always an array
+            if (!is_array($files)) {
+                $files = [$files];
+            }
+
+            foreach ($files as $file) {
+                if ($file !== null) {
+                    // Store each file in the 'uploads' directory inside 'storage/app/public'
+                    $path = $file->store('uploads', 'public');
+                    $filePaths[] = $path;
+                }
             }
         }
 
