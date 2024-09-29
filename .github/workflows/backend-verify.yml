@@ -1,4 +1,4 @@
-name: 📺 Backend - 🧹 Fix Code Style
+name: 📺 Backend - ⏱️ Verify
 
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -11,8 +11,8 @@ on:
   pull_request:
 
 jobs:
-  lint:
-    name: Lint
+  qa-check:
+    name: 🔦 Pipeline QA
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -35,13 +35,17 @@ jobs:
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
 
-      - name: Install Pint
-        run: composer global require laravel/pint
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Lint PHP
+        run: find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
 
       - name: Run Pint
-        run: pint
+        run: ./vendor/bin/pint --test
 
-      - name: Commit linted files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        # with:
-        #   commit_message: "Fixes coding style"
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
+
+      - name: Run tests
+        run: php artisan test
