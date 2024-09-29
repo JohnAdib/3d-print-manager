@@ -1,33 +1,38 @@
-# Base image for PHP 8.2 with FPM
 FROM php:8.2-fpm
 
-# Install necessary PHP extensions for Laravel
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
+    build-essential \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    libzip-dev \
+    libonig-dev \
+    locales \
     zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
     unzip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql gd zip
+    git \
+    curl
 
-# Install Composer globally
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Install PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
-# Set the working directory inside the container
-WORKDIR /var/www/html
+# Set working directory
+WORKDIR /var/www/backend
 
-# Copy existing application code to the container
+# Copy composer.json and install dependencies
+COPY composer.json composer.lock ./
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-scripts --no-autoloader
+
+# Copy project files
 COPY . .
 
-# Install Laravel dependencies via Composer
-RUN composer install --prefer-dist --no-scripts --no-dev --optimize-autoloader
+# Install application dependencies
+RUN composer dump-autoload --optimize
 
-# Set proper permissions for Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Expose PHP-FPM port
+# Expose port 9000
 EXPOSE 9000
 
 # Start PHP-FPM
