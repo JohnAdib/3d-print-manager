@@ -1,4 +1,4 @@
-name: Fix Code Style
+name: 📺 Backend - 🧹 Fix Code Style
 
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -7,9 +7,16 @@ on:
   # Trigger the workflow on push to the main
   push:
 
+  # Trigger the workflow on pull request
+  pull_request:
+
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     permissions:
       contents: write
     strategy:
@@ -29,11 +36,9 @@ jobs:
           coverage: none
 
       - name: Install Pint
-        working-directory: ./backend
         run: composer global require laravel/pint
 
       - name: Run Pint
-        working-directory: ./backend
         run: pint
 
       - name: Commit linted files
