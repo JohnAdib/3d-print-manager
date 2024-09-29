@@ -80,6 +80,6 @@
   </div>
 </template>
 
-<script setup type="ts">
+<script setup lang="ts">
 import { ForwardIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
 </script>
