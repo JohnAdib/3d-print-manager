@@ -1,6 +1,6 @@
 import type { IProjectData, IProjectWithFilesPayload } from '@/interfaces'
-import { fetchWithErrorHandling } from './fetch-with-error-handling'
 import { API_V1_PATH } from '@/config/constants'
+import { fetchWithErrorHandling } from '../fetch/fetch-with-error-handling'
 
 export async function sendProjectWithFiles({
   projectData,
@@ -18,8 +18,6 @@ export async function sendProjectWithFiles({
   projectFiles.forEach((uploadedFile) => {
     formDataToSend.append('files[]', uploadedFile.file)
   })
-
-  console.log('formDataToSend', formDataToSend)
 
   const apiUrl = API_V1_PATH + '3d-project'
   return await fetchWithErrorHandling(apiUrl, {
