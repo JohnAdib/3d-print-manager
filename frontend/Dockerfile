@@ -1,10 +1,10 @@
-# Stage 1: Build the Vue.js app
-FROM node:lts-alpine AS build
+# Use the official Node.js image for Vite development
+FROM node:20-alpine
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (or yarn.lock) files
+# Copy the package.json and package-lock.json (or yarn.lock)
 COPY package*.json ./
 
 # Install dependencies
@@ -13,16 +13,8 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
-# Build the application for production
-RUN npm run build
+# Expose the Vite dev server port (default: 4011)
+EXPOSE 4011
 
-# Stage 2: Serve the app with an external Nginx (no need for Nginx here)
-FROM node:lts-alpine
-
-WORKDIR /app
-
-COPY --from=build /app/dist /app/dist
-
-# No need to expose ports here; Nginx will serve it
-
-CMD ["sh", "-c", "echo 'Build Complete. Serve via Nginx.'"]
+# Start the Vite development server
+CMD ["npm", "run", "dev"]

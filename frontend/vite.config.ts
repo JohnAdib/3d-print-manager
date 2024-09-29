@@ -7,14 +7,17 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueJsx(), vueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 4011,
+    watch: {
+      usePolling: true
     }
   }
 })
