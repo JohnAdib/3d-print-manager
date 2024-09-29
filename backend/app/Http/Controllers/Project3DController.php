@@ -23,14 +23,13 @@ class Project3DController extends Controller
         // Collect additional project data
         $projectData = [
             'uid' => $request->input('uid'),
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'projectName' => $request->input('projectName'),
-            'description' => $request->input('description'),
+            'name' => $request->input('name', null),
+            'email' => $request->input('email', null),
+            'projectName' => $request->input('projectName', null),
+            'description' => $request->input('description', null),
         ];
 
         $filePaths = [];
-
 
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $file) {

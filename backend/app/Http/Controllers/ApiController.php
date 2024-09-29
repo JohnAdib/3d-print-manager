@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class ApiController extends Controller
 {
     public function root()
@@ -14,7 +12,7 @@ class ApiController extends Controller
             'result' => [
                 'version' => 1,
                 'update' => now()->toDateTimeString(),
-            ]
+            ],
         ]);
     }
 
@@ -26,8 +24,7 @@ class ApiController extends Controller
             'result' => [
                 'version' => 1,
                 'update' => now()->toDateTimeString(),
-            ]
+            ],
         ]);
     }
-
 }
