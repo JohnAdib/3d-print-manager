@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Header from '@/components/layout/Header.vue'
-import Footer from '@/components/layout/Footer.vue'
+import PageHeader from '@/components/layout/PageHeader.vue'
+import PageFooter from '@/components/layout/PageFooter.vue'
 </script>
 
 <template>
   <div class="flex flex-col h-screen">
-    <Header />
+    <PageHeader />
     <main class="grow">
       <RouterView />
     </main>
-    <Footer />
+    <PageFooter />
   </div>
 </template>
