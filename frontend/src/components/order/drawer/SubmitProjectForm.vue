@@ -91,7 +91,7 @@
                 name="description"
                 maxlength="1000"
                 placeholder="Please provide a any additional information you'd like to share, we'd be sure to read it."
-                class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 min-h-36 max-h-96"
+                class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 min-h-24 md:min-h-36 max-h-48 md:max-h-96"
               />
             </div>
           </div>

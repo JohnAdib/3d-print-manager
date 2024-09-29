@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div
-    class="isolate flex relative items-center justify-center h-full bg-sky-600"
+    class="isolate flex relative items-center justify-center h-full bg-sky-600 overflow-hidden"
   >
     <div class="container z-20">
       <div class="row">

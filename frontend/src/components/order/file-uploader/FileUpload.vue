@@ -12,7 +12,7 @@
       <div class="text-center">
         <PhotoIcon class="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
         <div class="mt-4 flex text-sm text-gray-600">
-          <div class="font-semibold text-indigo-600">
+          <div class="font-semibold text-sky-600">
             <span>Upload a .STL file</span>
             <input
               id="file-upload"

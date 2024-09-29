@@ -16,11 +16,11 @@ const isActiveLink = (href: string) => route.path === href
     class="sticky top-0 border-b border-slate-200 px-4 md:px-8 select-none overflow-hidden flex-none bg-slate-50/30 backdrop-blur-sm"
   >
     <div
-      class="w-full mx-auto flex flex-wrap items-center justify-between h-16"
+      class="w-full mx-auto flex flex-nowrap items-center justify-between h-16"
     >
       <RouterLink
         to="/"
-        class="text-2xl font-bold text-slate-900 flex items-center gap-2"
+        class="text-2xl font-bold text-slate-900 flex items-center gap-2 flex-shrink-0"
       >
         <img src="@/assets/logo.png" alt="3D Print Manager" class="h-12 w-12" />
         <h1 class="text-lg font-bold text-sky-800 hidden sm:block">
