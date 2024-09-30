@@ -10,10 +10,12 @@ class ApiController extends Controller
     {
         return response()->json([
             'okay' => true,
-            'message' => 'Welcome to the API! this is the root endpoint',
+            'msg' => 'Welcome to the API! this is the root endpoint. Please use /v1 for the latest version',
             'result' => [
                 'version' => 1,
                 'update' => now()->toDateTimeString(),
+                "latest_api_url" => "/api/v1",
+                "latest_api_docs" => "/docs",
             ],
         ]);
     }
@@ -22,10 +24,15 @@ class ApiController extends Controller
     {
         return response()->json([
             'okay' => true,
-            'message' => 'All good! this is the v1 endpoint',
+            'msg' => 'Wow! You are using the latest version of the API. We are happy to have you here!',
             'result' => [
-                'version' => 1,
-                'update' => now()->toDateTimeString(),
+                "apiList" => [
+                    'add_project' => [
+                        "method" => "POST",
+                        "url" => "/api/v1/project-3d",
+                    ]
+                ],
+                "apiDocs" => "/docs",
             ],
         ]);
     }
