@@ -2,6 +2,8 @@
 
 Welcome to **3D Print Manager**, a complete solution for uploading and managing 3D printing projects. This project allows users to upload STL files, preview them, and manage project data. Built using **Laravel** for the backend and **Vue.js** for the frontend, the project is containerized using Docker and is mobile-friendly, ready for easy deployment and scalability.
 
+<https://www.loom.com/share/a467b790999747a09c28a9f2ba62d4b7?sid=6da2b323-9c6d-4b42-be96-fcf946c3cba8>
+
 ## Features
 
 - **File Upload**: Upload multiple 3D print STL files through a drag-and-drop interface.
