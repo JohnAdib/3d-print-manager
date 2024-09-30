@@ -1,8 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
 import { useProjectSubmission } from './useProjectSubmission'
 import { useFileStore } from '@/store/fileStore'
 import { sendProjectWithFiles } from '@/utils/server/send-project-with-files'
-import { showAlert } from '@/utils/alert/show-alert'
 import { useDrawerStore } from '@/store/drawerStore'
 
 // Mock external dependencies
@@ -29,7 +28,6 @@ vi.mock('@/utils/alert/show-alert', () => ({
 
 describe('useProjectSubmission', () => {
   let fileStore: ReturnType<typeof useFileStore>
-  let drawerStore: ReturnType<typeof useDrawerStore>
 
   beforeEach(() => {
     fileStore = useFileStore()
@@ -41,7 +39,8 @@ describe('useProjectSubmission', () => {
   it('should set isSaving to true when saving and then false after saving', async () => {
     const { handleSaveProject, isSaving } = useProjectSubmission()
 
-    sendProjectWithFiles.mockResolvedValueOnce({
+    // Fix: Add the correct typing for the mock function
+    ;(sendProjectWithFiles as Mock).mockResolvedValueOnce({
       result: { dataPath: 'some/path' },
       msg: 'Project submitted successfully'
     })
@@ -61,7 +60,8 @@ describe('useProjectSubmission', () => {
     const { handleSaveProject } = useProjectSubmission()
     const projectData = { title: 'Test Project' }
 
-    sendProjectWithFiles.mockResolvedValueOnce({
+    // Fix: Add the correct typing for the mock function
+    ;(sendProjectWithFiles as Mock).mockResolvedValueOnce({
       result: { dataPath: 'some/path' },
       msg: 'Project submitted successfully'
     })
