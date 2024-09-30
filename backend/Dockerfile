@@ -36,8 +36,18 @@ COPY . .
 RUN chown -R www-data:www-data /var/www/backend/storage /var/www/backend/bootstrap/cache
 RUN chmod -R 775 /var/www/backend/storage /var/www/backend/bootstrap/cache
 
-# Install application dependencies
+# Install application dependencies and optimize autoload
 RUN composer dump-autoload --optimize
+
+# Optional: run migrations (ensure DB is set up correctly)
+# RUN php artisan migrate --force
+
+# Create storage symlink
+RUN php artisan storage:link
+
+# Cache config and routes to improve performance
+RUN php artisan config:cache
+RUN php artisan route:cache
 
 # Expose port 9000
 EXPOSE 9000
