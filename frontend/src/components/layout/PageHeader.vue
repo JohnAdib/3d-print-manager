@@ -8,7 +8,7 @@ const headerLinks = [
 ]
 
 const route = useRoute()
-const isActiveLink = (href: string) => route.path === href
+const isActiveLink = (href: string) => route?.path === href
 </script>
 
 <template>

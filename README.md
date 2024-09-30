@@ -84,7 +84,9 @@ The project is structured as a [monorepo](https://monorepo.tools/), enabling dev
 ### API Endpoints
 
 - **POST /api/v1/project-3d**: Submits a new project with file uploads.
+
   - **Request Body**:
+
     ```json
     {
       "uid": "project-uuid",
@@ -95,7 +97,9 @@ The project is structured as a [monorepo](https://monorepo.tools/), enabling dev
       "files[]": "binary data"
     }
     ```
+
   - **Response**:
+
     ```json
     {
       "okay": true,
@@ -177,3 +181,14 @@ This project felt more like building an MVP than just a simple task. The focus w
 \/     \__,_|___/_| |_| |_.__/ \___/ \__,_|_| |_|\__,_|\__,_|_|  |_|\___||___/"
 }
 ```
+
+## Screenshots
+
+![3d-print-manager](doc/ui-homepage.png)
+![3d-print-manager](doc/ui-order.png)
+![3d-print-manager](doc/ui-preview.png)
+![3d-print-manager](doc/ui-drawer.png)
+![3d-print-manager](doc/ui-success.png)
+![3d-print-manager](doc/api-success.png)
+![3d-print-manager](doc/ui-test.png)
+![3d-print-manager](doc/ui-about.png)

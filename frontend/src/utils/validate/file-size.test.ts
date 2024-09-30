@@ -18,7 +18,6 @@ describe('validateFileSize', () => {
 
   it('should return false for a file exceeding the size limit', () => {
     const file = mockFile(FILE_SIZE_LIMIT * 1024 * 1024 + 1) // Just above the limit
-    console.log(`File size: ${(file.size / 1024 / 1024).toFixed(2)} MB`) // Debugging
     const result = validateFileSize(file)
     expect(result).toBe(false)
   })
@@ -37,7 +36,6 @@ describe('validateFileSize', () => {
 
   it('should return false for large files exceeding the limit', () => {
     const file = mockFile(FILE_SIZE_LIMIT * 2 * 1024 * 1024) // Twice the size limit
-    console.log(`File size: ${(file.size / 1024 / 1024).toFixed(2)} MB`) // Debugging
     const result = validateFileSize(file)
     expect(result).toBe(false)
   })
@@ -45,7 +43,6 @@ describe('validateFileSize', () => {
   it('should use the provided maxSizeMB instead of the default', () => {
     const customLimit = 5 // Custom limit of 5 MB
     const file = mockFile(6 * 1024 * 1024) // 6 MB file
-    console.log(`File size: ${(file.size / 1024 / 1024).toFixed(2)} MB`) // Debugging
     const result = validateFileSize(file, customLimit)
     expect(result).toBe(false)
   })
