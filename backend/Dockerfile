@@ -32,6 +32,10 @@ RUN composer install --no-scripts --no-autoloader
 # Copy project files
 COPY . .
 
+# Set proper permissions for storage and bootstrap/cache directories
+RUN chown -R www-data:www-data /var/www/backend/storage /var/www/backend/bootstrap/cache
+RUN chmod -R 775 /var/www/backend/storage /var/www/backend/bootstrap/cache
+
 # Install application dependencies
 RUN composer dump-autoload --optimize
 

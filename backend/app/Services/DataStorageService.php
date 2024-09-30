@@ -17,7 +17,7 @@ class DataStorageService
     public function storeData(
         array $data,
         string $filePath,
-        string $disk = 'local'
+        string $disk = 'public'
     ): string {
         // Ensure the directory exists
         $directory = dirname($filePath);

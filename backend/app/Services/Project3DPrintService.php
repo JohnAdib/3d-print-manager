@@ -28,7 +28,8 @@ class Project3DPrintService
 
         $filePaths = $this->uploadService->uploadMultipleFiles(
             $files,
-            $projectData['folder']
+            $projectData['folder'],
+            "public"
         );
 
         $projectData['files'] = $filePaths;

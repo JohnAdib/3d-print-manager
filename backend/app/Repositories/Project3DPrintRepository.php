@@ -18,7 +18,7 @@ class Project3DPrintRepository
         $this->dataStorageService->storeData(
             $projectData,
             $projectData['dataPath'],
-            'local',
+            'public',
         );
 
         // TODO: Save project to database

@@ -9,6 +9,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./backend/storage/app/public:/var/www/html/storage/app/public
     depends_on:
       - backend
       - ui
@@ -24,7 +25,7 @@ services:
       - APP_URL=http://localhost
     volumes:
       - ./backend:/var/www/backend
-      - ./backend/storage/uploads:/var/www/html/storage/uploads
+      - ./backend/storage/app/public:/var/www/html/storage/app/public
       - ./backend/.docker/php/php.ini:/usr/local/etc/php/conf.d/custom-php.ini
     networks:
       - local-network
