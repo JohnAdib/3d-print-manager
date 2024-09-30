@@ -26,14 +26,11 @@ WORKDIR /var/www/backend
 # Copy the custom php.ini
 COPY .docker/php/php.ini /usr/local/etc/php/conf.d/custom-php.ini
 
-# Copy composer.json and composer.lock
-COPY composer.json composer.lock ./
-
-# Install Composer dependencies
-RUN composer install --no-scripts --no-autoloader --no-interaction --optimize-autoloader --prefer-dist
-
 # Copy the entire project files to the container
 COPY . .
+
+# Install Composer dependencies with verbose output
+RUN composer install --no-interaction --optimize-autoloader --prefer-dist --no-dev -vvv
 
 # Generate application key and link storage after the files are copied
 RUN php artisan key:generate && php artisan storage:link
