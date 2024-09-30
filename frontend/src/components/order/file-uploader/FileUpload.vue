@@ -19,6 +19,7 @@
               name="file-upload"
               type="file"
               class="sr-only"
+              accept=".stl"
               @change="onFileChange"
               multiple
             />

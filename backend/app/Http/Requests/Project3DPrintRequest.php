@@ -11,7 +11,7 @@ class Project3DPrintRequest extends FormRequest
      */
     public function rules(): array
     {
-        $maxFileSize = env('MAX_FILE_SIZE_MB', 20) * 1024;
+        $maxFileSize = env('MAX_FILE_SIZE_MB', 100) * 1024;
 
         return [
             'uid' => ['required', 'string', 'uuid'],
