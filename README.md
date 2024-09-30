@@ -27,7 +27,7 @@ The project is structured as a [monorepo](https://monorepo.tools/), enabling dev
 
 - **[Laravel](https://laravel.com/)**: Web application framework with expressive, elegant syntax
 - **[Composer](https://getcomposer.org/)**: A Dependency Manager for PHP
-- **[Swagger](https://swagger.io/)**: API documentation tool.
+- **[Scribe](https://scribe.knuckles.wtf/laravel/)**: Pretty HTML documentation page
 
 ### Frontend
 
@@ -77,20 +77,21 @@ The project is structured as a [monorepo](https://monorepo.tools/), enabling dev
 4. **Access the Application:**
 
    - **Frontend**: The Vue.js frontend is accessible at `http://localhost/`.
-   - **Backend**: The Laravel API can be accessed at `http://localhost/api`.
+   - **Backend**: The Laravel API can be accessed at `http://localhost/api`
+   - **Backend Documentation** The Laravel API docs is accessible at `http://localhost:4012/docs`
    - **Storage**: Uploaded files can be accessed via `http://localhost/storage/{path-to-file}`.
 
 ### API Endpoints
 
-- **POST /api/projects**: Submits a new project with file uploads.
+- **POST /api/v1/project-3d**: Submits a new project with file uploads.
   - **Request Body**:
     ```json
     {
       "uid": "project-uuid",
-      "name": "Project Name",
-      "email": "user@example.com",
-      "projectName": "New 3D Project",
-      "description": "Details about the project",
+      "name": "MrAdib",
+      "email": "Mr.John.Adib@gmail.com",
+      "projectName": "Awesome 3D Project",
+      "description": "This is cool!",
       "files[]": "binary data"
     }
     ```
@@ -101,10 +102,10 @@ The project is structured as a [monorepo](https://monorepo.tools/), enabling dev
       "msg": "Project Submitted Successfully",
       "result": {
         "uid": "26569dd9-4e1b-4b97-b35a-e7ddc4acd28a",
-        "name": null,
-        "email": null,
-        "projectName": null,
-        "description": null,
+        "name": "MrAdib",
+        "email": "Mr.John.Adib@gmail.com",
+        "projectName": "Awesome 3D Project",
+        "description": "This is cool!",
         "type": "3d_print",
         "folder": "3d_print/26569dd9-4e1b-4b97-b35a-e7ddc4acd28a",
         "dataPath": "3d_print/26569dd9-4e1b-4b97-b35a-e7ddc4acd28a/data.json",

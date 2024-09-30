@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: 3D-Print
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/project-3d:
+    post:
+      summary: 'Save a 3D print project along with associated files.'
+      operationId: saveA3DPrintProjectAlongWithAssociatedFiles
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  okay: true
+                  msg: 'Project submitted successfully'
+                  result:
+                    uid: 2ecd2430-24f9-4d60-927d-7ec9937a2360
+                    name: 'John Doe'
+                    email: john@example.com
+                    projectName: 'My 3D Print Project'
+                    description: 'This is a 3D print project.'
+                    type: 3d_print
+                    folder: 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360
+                    dataPath: 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/data.json
+                    files:
+                      - 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file1.stl
+                      - 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file2.stl
+                properties:
+                  okay:
+                    type: boolean
+                    example: true
+                  msg:
+                    type: string
+                    example: 'Project submitted successfully'
+                  result:
+                    type: object
+                    properties:
+                      uid:
+                        type: string
+                        example: 2ecd2430-24f9-4d60-927d-7ec9937a2360
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      projectName:
+                        type: string
+                        example: 'My 3D Print Project'
+                      description:
+                        type: string
+                        example: 'This is a 3D print project.'
+                      type:
+                        type: string
+                        example: 3d_print
+                      folder:
+                        type: string
+                        example: 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360
+                      dataPath:
+                        type: string
+                        example: 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/data.json
+                      files:
+                        type: array
+                        example:
+                          - 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file1.stl
+                          - 3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file2.stl
+                        items:
+                          type: string
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  okay: false
+                  msg: 'Validation error'
+                  result:
+                    errors:
+                      files:
+                        - 'The files field is required.'
+                properties:
+                  okay:
+                    type: boolean
+                    example: false
+                  msg:
+                    type: string
+                    example: 'Validation error'
+                  result:
+                    type: object
+                    properties:
+                      errors:
+                        type: object
+                        properties:
+                          files:
+                            type: array
+                            example:
+                              - 'The files field is required.'
+                            items:
+                              type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  okay: false
+                  msg: 'An error occurred while saving the project'
+                  result:
+                    error: 'Detailed error message'
+                properties:
+                  okay:
+                    type: boolean
+                    example: false
+                  msg:
+                    type: string
+                    example: 'An error occurred while saving the project'
+                  result:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: 'Detailed error message'
+      tags:
+        - '3D Print Projects'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                uid:
+                  type: string
+                  description: 'The unique identifier for the project.'
+                  example: 2ecd2430-24f9-4d60-927d-7ec9937a2360
+                name:
+                  type: string
+                  description: 'nullable The name of the project owner.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'nullable The email address of the project owner.'
+                  example: john@example.com
+                projectName:
+                  type: string
+                  description: 'nullable The name of the project.'
+                  example: 'My 3D Print Project'
+                description:
+                  type: string
+                  description: 'nullable A short description of the project.'
+                  example: 'This is a 3D print project.'
+                files:
+                  type: array
+                  description: 'The STL files related to the project. These must be an array of files.'
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - uid
+                - files
+      security: []
+  /api/v1:
+    get:
+      summary: ''
+      operationId: getApiV1
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  okay: true
+                  message: 'All good! this is the v1 endpoint'
+                  result:
+                    version: 1
+                    update: '2024-09-30 02:22:18'
+                properties:
+                  okay:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'All good! this is the v1 endpoint'
+                  result:
+                    type: object
+                    properties:
+                      version:
+                        type: integer
+                        example: 1
+                      update:
+                        type: string
+                        example: '2024-09-30 02:22:18'
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: '3D Print Projects'
+    description: 'This endpoint allows you to submit a 3D print project with the necessary details and files.'
+  -
+    name: Endpoints
+    description: ''

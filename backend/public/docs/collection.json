@@ -1,0 +1,168 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "3D-Print",
+        "_postman_id": "9dbb8c2f-0e7f-44e1-ac48-628663f8aca8",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "3D Print Projects",
+            "description": "This endpoint allows you to submit a 3D print project with the necessary details and files.",
+            "item": [
+                {
+                    "name": "Save a 3D print project along with associated files.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/project-3d",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/project-3d"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "uid",
+                                    "value": "2ecd2430-24f9-4d60-927d-7ec9937a2360",
+                                    "type": "text",
+                                    "description": "The unique identifier for the project."
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "John Doe",
+                                    "type": "text",
+                                    "description": "nullable The name of the project owner."
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "john@example.com",
+                                    "type": "text",
+                                    "description": "nullable The email address of the project owner."
+                                },
+                                {
+                                    "key": "projectName",
+                                    "value": "My 3D Print Project",
+                                    "type": "text",
+                                    "description": "nullable The name of the project."
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "This is a 3D print project.",
+                                    "type": "text",
+                                    "description": "nullable A short description of the project."
+                                },
+                                {
+                                    "key": "files[]",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"okay\": true,\n \"msg\": \"Project submitted successfully\",\n \"result\": {\n   \"uid\": \"2ecd2430-24f9-4d60-927d-7ec9937a2360\",\n   \"name\": \"John Doe\",\n   \"email\": \"john@example.com\",\n   \"projectName\": \"My 3D Print Project\",\n   \"description\": \"This is a 3D print project.\",\n   \"type\": \"3d_print\",\n   \"folder\": \"3d_print\/2ecd2430-24f9-4d60-927d-7ec9937a2360\",\n   \"dataPath\": \"3d_print\/2ecd2430-24f9-4d60-927d-7ec9937a2360\/data.json\",\n   \"files\": [\n     \"3d_print\/2ecd2430-24f9-4d60-927d-7ec9937a2360\/file1.stl\",\n     \"3d_print\/2ecd2430-24f9-4d60-927d-7ec9937a2360\/file2.stl\"\n   ]\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n \"okay\": false,\n \"msg\": \"Validation error\",\n \"result\": {\n   \"errors\": {\n     \"files\": [\"The files field is required.\"]\n   }\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n \"okay\": false,\n \"msg\": \"An error occurred while saving the project\",\n \"result\": {\n   \"error\": \"Detailed error message\"\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/v1",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"okay\":true,\"message\":\"All good! this is the v1 endpoint\",\"result\":{\"version\":1,\"update\":\"2024-09-30 02:22:18\"}}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

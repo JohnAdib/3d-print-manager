@@ -1,0 +1,147 @@
+name: '3D Print Projects'
+description: 'This endpoint allows you to submit a 3D print project with the necessary details and files.'
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/project-3d
+    metadata:
+      groupName: '3D Print Projects'
+      groupDescription: 'This endpoint allows you to submit a 3D print project with the necessary details and files.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Save a 3D print project along with associated files.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      uid:
+        name: uid
+        description: 'The unique identifier for the project.'
+        required: true
+        example: 2ecd2430-24f9-4d60-927d-7ec9937a2360
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      name:
+        name: name
+        description: 'nullable The name of the project owner.'
+        required: false
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      email:
+        name: email
+        description: 'nullable The email address of the project owner.'
+        required: false
+        example: john@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      projectName:
+        name: projectName
+        description: 'nullable The name of the project.'
+        required: false
+        example: 'My 3D Print Project'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      description:
+        name: description
+        description: 'nullable A short description of the project.'
+        required: false
+        example: 'This is a 3D print project.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      files:
+        name: files
+        description: 'The STL files related to the project. These must be an array of files.'
+        required: true
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      uid: 2ecd2430-24f9-4d60-927d-7ec9937a2360
+      name: 'John Doe'
+      email: john@example.com
+      projectName: 'My 3D Print Project'
+      description: 'This is a 3D print project.'
+    fileParameters:
+      files:
+        - null
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+           "okay": true,
+           "msg": "Project submitted successfully",
+           "result": {
+             "uid": "2ecd2430-24f9-4d60-927d-7ec9937a2360",
+             "name": "John Doe",
+             "email": "john@example.com",
+             "projectName": "My 3D Print Project",
+             "description": "This is a 3D print project.",
+             "type": "3d_print",
+             "folder": "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360",
+             "dataPath": "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/data.json",
+             "files": [
+               "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file1.stl",
+               "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file2.stl"
+             ]
+           }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+           "okay": false,
+           "msg": "Validation error",
+           "result": {
+             "errors": {
+               "files": ["The files field is required."]
+             }
+           }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+           "okay": false,
+           "msg": "An error occurred while saving the project",
+           "result": {
+             "error": "Detailed error message"
+           }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
