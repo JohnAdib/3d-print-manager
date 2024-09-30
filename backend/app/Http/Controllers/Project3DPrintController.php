@@ -6,13 +6,14 @@ use App\Http\Requests\Project3DPrintRequest;
 use App\Services\Project3DPrintService;
 use App\Helpers\ResponseService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\UploadedFile;
 
 class Project3DPrintController extends Controller
 {
-    protected $projectService;
+    protected Project3DPrintService $projectService;
 
     public function __construct(
-        Project3DPrintService $projectService,
+        Project3DPrintService $projectService
     ) {
         $this->projectService = $projectService;
     }
@@ -30,6 +31,12 @@ class Project3DPrintController extends Controller
 
             $files = $request->file('files');
 
+            if ($files instanceof UploadedFile) {
+                $files = [$files];
+            } elseif ($files === null) {
+                $files = [];
+            }
+
             $result = $this->projectService->saveProjectWithFiles(
                 $projectData,
                 $files
@@ -40,7 +47,6 @@ class Project3DPrintController extends Controller
                 $result,
                 201
             );
-
         } catch (\Exception $e) {
             return ResponseService::error(
                 'An error occurred while saving the project!',

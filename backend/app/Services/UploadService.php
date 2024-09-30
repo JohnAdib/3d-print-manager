@@ -24,10 +24,6 @@ class UploadService
             Storage::disk($disk)->makeDirectory($directory);
         }
 
-        if (!$file) {
-            return null;
-        }
-
         // Generate a sanitized version of the original file name
         $sanitizedFileName = $this->sanitizeFileName(
             pathinfo(
@@ -38,20 +34,26 @@ class UploadService
         $extension = $file->getClientOriginalExtension();
         $uniqueFileName = $sanitizedFileName . '_' . time() . '.' . $extension;
 
-        return $file->storeAs(
+        $filePath = $file->storeAs(
             $directory,
             $uniqueFileName,
             $disk
         );
+
+        if ($filePath === false) {
+            throw new \RuntimeException('Failed to store file.');
+        }
+
+        return $filePath;
     }
 
     /**
      * Handle multiple file uploads and return their paths
      *
-     * @param array $files
+     * @param array<UploadedFile> $files
      * @param string $directory
      * @param string $disk
-     * @return array
+     * @return array<string>
      */
     public function uploadMultipleFiles(
         array $files,
@@ -60,7 +62,7 @@ class UploadService
     ): array {
         $filePaths = [];
         foreach ($files as $file) {
-            if (!$file) {
+            if (!$file instanceof UploadedFile) {
                 continue;
             }
 
@@ -86,6 +88,6 @@ class UploadService
             '/[^A-Za-z0-9_\-]/',
             '_',
             $fileName
-        );
+        ) ?? '';
     }
 }

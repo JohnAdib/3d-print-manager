@@ -6,6 +6,9 @@ use App\Services\DataStorageService;
 
 class Project3DPrintRepository
 {
+    /**
+     * @var DataStorageService
+     */
     protected $dataStorageService;
 
     public function __construct(DataStorageService $dataStorageService)
@@ -13,11 +16,17 @@ class Project3DPrintRepository
         $this->dataStorageService = $dataStorageService;
     }
 
+    /**
+     * @param array<string, mixed> $projectData
+     */
     public function saveProjectWithFiles(array $projectData): void
     {
+        /** @var string $dataPath */
+        $dataPath = $projectData['dataPath'];
+
         $this->dataStorageService->storeData(
             $projectData,
-            $projectData['dataPath'],
+            $dataPath,
             'public',
         );
 
@@ -25,6 +34,5 @@ class Project3DPrintRepository
         // This is a placeholder for the actual database save
         // for the MVP, we are only storing the data.json file
         // as there was no requirement to store the project in the database!
-
     }
 }

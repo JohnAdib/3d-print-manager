@@ -9,7 +9,7 @@ class DataStorageService
     /**
      * Save data (e.g., JSON) to the specified storage disk.
      *
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $filePath
      * @param string $disk
      * @return string
@@ -25,13 +25,16 @@ class DataStorageService
             Storage::disk($disk)->makeDirectory($directory);
         }
 
+        $jsonData = json_encode($data, JSON_PRETTY_PRINT);
+
+        if ($jsonData === false) {
+            throw new \RuntimeException('Failed to encode data as JSON.');
+        }
+
         // Save the data to the specified file path
         Storage::disk($disk)->put(
             $filePath,
-            json_encode(
-                $data,
-                JSON_PRETTY_PRINT
-            )
+            $jsonData
         );
 
         return $filePath;

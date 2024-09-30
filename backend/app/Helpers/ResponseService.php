@@ -10,7 +10,7 @@ class ResponseService
      * Create a standard success response.
      *
      * @param string $message
-     * @param array $result
+     * @param array<string, mixed> $result
      * @param int $statusCode
      * @return JsonResponse
      */
@@ -30,7 +30,7 @@ class ResponseService
      * Create a standard error response.
      *
      * @param string $message
-     * @param array $result
+     * @param array<string, mixed> $result
      * @param int $statusCode
      * @return JsonResponse
      */

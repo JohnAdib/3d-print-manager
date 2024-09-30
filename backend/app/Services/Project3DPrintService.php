@@ -4,10 +4,18 @@ namespace App\Services;
 
 use App\Repositories\Project3DPrintRepository;
 use App\Services\UploadService;
+use Illuminate\Http\UploadedFile;
 
 class Project3DPrintService
 {
+    /**
+     * @var UploadService
+     */
     protected $uploadService;
+
+    /**
+     * @var Project3DPrintRepository
+     */
     protected $projectRepository;
 
     public function __construct(
@@ -18,6 +26,11 @@ class Project3DPrintService
         $this->projectRepository = $projectRepository;
     }
 
+    /**
+     * @param array<string, mixed> $projectData
+     * @param array<int, UploadedFile> $files
+     * @return array<string, mixed>
+     */
     public function saveProjectWithFiles(
         array $projectData,
         array $files
