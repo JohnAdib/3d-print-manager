@@ -28,6 +28,8 @@ vi.mock('@/utils/alert/show-alert', () => ({
 
 describe('useProjectSubmission', () => {
   let fileStore: ReturnType<typeof useFileStore>
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let drawerStore: ReturnType<typeof useDrawerStore>
 
   beforeEach(() => {
     fileStore = useFileStore()
