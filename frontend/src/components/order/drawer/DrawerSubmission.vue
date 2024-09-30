@@ -42,8 +42,8 @@ import {
 } from '@headlessui/vue'
 import ProjectForm from './SubmitProjectForm.vue'
 import { computed } from 'vue'
-import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
+import { useDrawerStore } from '@/store/drawerStore'
 
-const drawerStore = useProjectSubmissionDrawer()
+const drawerStore = useDrawerStore()
 const drawerStatus = computed(() => drawerStore.getDrawerStatus)
 </script>

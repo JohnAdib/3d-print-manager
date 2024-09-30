@@ -25,10 +25,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useFileStore } from '@/store/fileStore'
-import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
+import { useDrawerStore } from '@/store/drawerStore'
 
 const fileStore = useFileStore()
-const { openDrawer } = useProjectSubmissionDrawer()
+const { openDrawer } = useDrawerStore()
 
 const files = computed(() => fileStore.files)
 </script>

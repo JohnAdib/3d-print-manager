@@ -3,13 +3,13 @@ import { useFileStore } from '@/store/fileStore'
 import type { IProjectData } from '@/interfaces'
 import { sendProjectWithFiles } from '@/utils/server/send-project-with-files'
 import { showAlert } from '@/utils/alert/show-alert'
-import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
+import { useDrawerStore } from '@/store/drawerStore'
 
 export function useProjectSubmission() {
   const fileStore = useFileStore()
   const isSaving = ref(false)
 
-  const { closeDrawer } = useProjectSubmissionDrawer()
+  const { closeDrawer } = useDrawerStore()
 
   const handleSaveProject = async (projectData: IProjectData) => {
     isSaving.value = true

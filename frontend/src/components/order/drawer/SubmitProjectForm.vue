@@ -121,9 +121,9 @@ import { reactive } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { type IProjectData } from '@/interfaces'
 import { useProjectSubmission } from '@/composables/useProjectSubmission'
-import { useProjectSubmissionDrawer } from '@/store/useProjectSubmissionDrawer'
+import { useDrawerStore } from '@/store/drawerStore'
 
-const drawerStore = useProjectSubmissionDrawer()
+const drawerStore = useDrawerStore()
 const { handleSaveProject } = useProjectSubmission()
 
 const formData: IProjectData = reactive({
