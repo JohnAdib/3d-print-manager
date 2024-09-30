@@ -45,8 +45,8 @@ class Project3DPrintController extends Controller
      *    "folder": "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360",
      *    "dataPath": "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/data.json",
      *    "files": [
-     *      "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file1.stl",
-     *      "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file2.stl"
+     *      "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file1-timestamp.stl",
+     *      "3d_print/2ecd2430-24f9-4d60-927d-7ec9937a2360/file2-timestamp.stl"
      *    ]
      *  }
      * }
