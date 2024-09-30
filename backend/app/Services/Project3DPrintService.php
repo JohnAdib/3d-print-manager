@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\Project3DPrintRepository;
-use App\Services\UploadService;
 use Illuminate\Http\UploadedFile;
 
 class Project3DPrintService
