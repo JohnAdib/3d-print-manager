@@ -4,4 +4,3 @@ parameters:
     - app
     - database
     - routes
-    - tests
