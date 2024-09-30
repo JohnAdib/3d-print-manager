@@ -24,7 +24,6 @@ services:
       - APP_URL=http://localhost
     volumes:
       - ./backend:/var/www/backend
-      - ./backend/storage/app/public:/var/www/html/storage/app/public
       - ./backend/.docker/php/php.ini:/usr/local/etc/php/conf.d/custom-php.ini
     networks:
       - local-network
@@ -33,7 +32,6 @@ services:
     expose:
       - 4012
     working_dir: /var/www/backend
-    command: php artisan serve --host=0.0.0.0 --port=4012
 
   ui:
     build:
