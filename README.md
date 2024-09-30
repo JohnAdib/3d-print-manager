@@ -124,7 +124,51 @@ The project includes separate pipelines for **backend** and **frontend**. These 
 - **Backend pipeline**: Runs static analysis with PHPStan, formats code using Laravel Pint, and runs PHPUnit tests.
 - **Frontend pipeline**: Runs linting, format checks, and any frontend-related tests, along with building the frontend.
 
-## TODO
+### TODO
 
-- [ ] Save project data to a database
-- [ ] Improve file upload error handling and validation
+**UI**
+
+- [ ] Add quantity input
+- [ ] Validate form inputs
+- [ ] Set page title and meta description
+- [ ] Configure social media preview
+- [ ] Create admin panel to view uploaded projects
+- [ ] Add more unit tests
+- [ ] Add Cypress for E2E testing
+- [ ] Integrate Storybook
+- [ ] Extract reusable components (e.g., buttons)
+
+**Backend**
+
+- [ ] Add database integration
+- [ ] Enhance file upload validation and error handling
+- [ ] Add more unit tests
+- [ ] Secure admin endpoints (project listings)
+- [ ] Create API to retrieve project details
+
+### Testing
+
+This project felt more like building an MVP than just a simple task. The focus was on delivering the core functionality, so there wasn't enough time to write unit or integration tests, even though everything was manually tested multiple times. Automated tests, like unit and integration tests, are critical, and with more time, Cypress tests would also be added. Playing around with the Three.js camera setup took longer than expected, which reduced the time available for testing.
+
+## Who wants to know more about me?
+
+```json
+{
+  "name": "John Adib",
+  "title": "Solution Architect & Mentor",
+  "location": "London, UK",
+  "contact": "hi@mradib.com",
+  "website": "https://MrAdib.com",
+  "superpowers": [
+    "Turning complexity into simplicity with a smile",
+    "Building teams and platforms from scratch",
+    "Leveling up the next generation of engineers"
+  ],
+  "achievements": [
+    "Led multi-million dollar projects",
+    "WorldSkills Medalist",
+    "Empowered engineers across 200+ mentoring sessions"
+  ],
+  "mantra": "Push boundaries."
+}
+```
