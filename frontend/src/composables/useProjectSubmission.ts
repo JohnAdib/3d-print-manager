@@ -17,14 +17,23 @@ export function useProjectSubmission() {
     try {
       const files = computed(() => fileStore.files)
 
-      await sendProjectWithFiles({
+      const apiResponse = await sendProjectWithFiles({
         projectData,
         projectFiles: files.value
       })
 
+      // get the url from router as prefix + storage folder
+      const filePrefix = window.location.origin + '/storage/'
+      const apiDataPath = filePrefix + apiResponse.result.dataPath
+      const alertFooter =
+        '<a target="_blank" href="' +
+        apiDataPath +
+        '">Just in case, link to your project data!</a>'
+
       showAlert({
-        title: 'Project Submitted Successfully',
+        title: apiResponse.msg,
         text: 'We will review your project and get back to you soon. Thank you!',
+        footer: alertFooter,
         icon: 'success'
       })
 

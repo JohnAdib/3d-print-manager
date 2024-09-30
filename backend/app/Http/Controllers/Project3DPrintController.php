@@ -36,7 +36,7 @@ class Project3DPrintController extends Controller
             );
 
             return ResponseService::success(
-                'Project and files uploaded successfully',
+                'Project Submitted Successfully',
                 $result,
                 201
             );

@@ -28,8 +28,19 @@ class UploadService
             return null;
         }
 
-        return $file->store(
+        // Generate a sanitized version of the original file name
+        $sanitizedFileName = $this->sanitizeFileName(
+            pathinfo(
+                $file->getClientOriginalName(),
+                PATHINFO_FILENAME
+            )
+        );
+        $extension = $file->getClientOriginalExtension();
+        $uniqueFileName = $sanitizedFileName . '_' . time() . '.' . $extension;
+
+        return $file->storeAs(
             $directory,
+            $uniqueFileName,
             $disk
         );
     }
@@ -60,5 +71,21 @@ class UploadService
             );
         }
         return $filePaths;
+    }
+
+    /**
+     * Sanitize file names by removing unwanted characters and replacing spaces
+     *
+     * @param string $fileName
+     * @return string
+     */
+    private function sanitizeFileName(string $fileName): string
+    {
+        // Replace spaces with underscores, remove special characters
+        return preg_replace(
+            '/[^A-Za-z0-9_\-]/',
+            '_',
+            $fileName
+        );
     }
 }
