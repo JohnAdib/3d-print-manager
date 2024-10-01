@@ -166,7 +166,7 @@ Here’s a quick rundown of the assumptions
 
 This project felt more like building an MVP than just a simple task. The focus was on delivering the core functionality, so there wasn't enough time to write more unit or integration tests, even though everything was manually tested multiple times. Automated tests, like unit and integration tests, are critical, and with more time, Cypress tests would also be added. Playing around with the Three.js camera setup took longer than expected, which reduced the time available for testing.
 
-I spend almost an hour writing unit tests for the UI and backend. Due to time constraints, they lack integration tests. If time permits, consider adding Cypress E2E tests.
+I spend almost two hours writing unit tests for the UI and backend. Due to time constraints, they lack integration tests. If time permits, consider adding Cypress E2E tests.
 
 ## Who wants to know more about me?
 
