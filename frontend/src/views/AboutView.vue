@@ -109,12 +109,10 @@
 
         <div class="max-w-xl text-base leading-7 text-gray-700 lg:col-span-7">
           <p>
-            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-            enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-            praesent donec est. Odio penatibus risus viverra tellus varius sit
-            neque erat velit. Faucibus commodo massa rhoncus, volutpat.
-            Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae
-            sed turpis id.
+            The 3D Print Manager simplifies the process of managing your 3D
+            printing projects. Users can easily upload multiple STL files,
+            preview them in a 3D viewer, and submit their project details in a
+            streamlined interface.
           </p>
           <ul role="list" class="mt-8 max-w-xl space-y-8 text-gray-600">
             <li class="flex gap-x-3">
@@ -124,25 +122,25 @@
               />
               <span
                 ><strong class="font-semibold text-gray-900"
-                  >Push to deploy.</strong
+                  >File Selection</strong
                 >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.</span
-              >
+                Users can drag and drop or browse for STL files, ensuring a
+                quick and hassle-free upload process.
+              </span>
             </li>
             <li class="flex gap-x-3">
-              <LockClosedIcon
+              <CubeTransparentIcon
                 class="mt-1 h-5 w-5 flex-none text-sky-600"
                 aria-hidden="true"
               />
               <span
                 ><strong class="font-semibold text-gray-900"
-                  >SSL certificates.</strong
+                  >Real-Time Previews</strong
                 >
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo.</span
-              >
+                The integration of Three.js allows users to visualize their 3D
+                models interactively, enhancing their ability to review and
+                refine their designs before submission.
+              </span>
             </li>
             <li class="flex gap-x-3">
               <ServerIcon
@@ -151,19 +149,18 @@
               />
               <span
                 ><strong class="font-semibold text-gray-900"
-                  >Database backups.</strong
+                  >Efficient File Management</strong
                 >
-                Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.
-                Et magna sit morbi lobortis.</span
-              >
+                The application provides options to modify file selections
+                easily, enabling users to perfect their uploads.
+              </span>
             </li>
           </ul>
           <p class="mt-8">
-            Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis
-            odio id et. Id blandit molestie auctor fermentum dignissim. Lacus
-            diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices
-            hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem
-            vel integer orci.
+            Working on this project was a fantastic adventure, combining the
+            technical thrill of coding with the artistic joy of visualizing 3D
+            models. Utilizing Three.js allowed me to create engaging real-time
+            previews, making it easier for users to interact with their designs.
           </p>
 
           <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">
@@ -235,7 +232,7 @@
 <script setup lang="ts">
 import {
   CloudArrowUpIcon,
-  LockClosedIcon,
+  CubeTransparentIcon,
   ServerIcon
 } from '@heroicons/vue/20/solid'
 </script>
