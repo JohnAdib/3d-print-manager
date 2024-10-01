@@ -130,6 +130,16 @@ The project includes separate pipelines for **backend** and **frontend**. These 
 - **Backend pipeline**: Runs static analysis with PHPStan, formats code using Laravel Pint, and runs PHPUnit tests.
 - **Frontend pipeline**: Runs linting, format checks, and any frontend-related tests, along with building the frontend.
 
+### Assumptions
+
+Here’s a quick rundown of the assumptions
+
+- It seemed like an MVP task.
+- With no database mentioned, I saved everything in JSON format.
+- I assumed users were guests, so no login system.
+- There wasn’t time for an admin panel, so project submissions need to be manually checked. Adding logs could help track submissions.
+- There are plenty of other improvements that could be added with more time.
+
 ### TODO
 
 **UI**
@@ -139,7 +149,7 @@ The project includes separate pipelines for **backend** and **frontend**. These 
 - [ ] Set page title and meta description
 - [ ] Configure social media preview
 - [ ] Create admin panel to view uploaded projects
-- [ ] Add more unit tests
+- [ ] Add more unit tests to improve test coverage
 - [ ] Add Cypress for E2E testing
 - [ ] Integrate Storybook
 - [ ] Extract reusable components (e.g., buttons)
@@ -148,13 +158,15 @@ The project includes separate pipelines for **backend** and **frontend**. These 
 
 - [ ] Add database integration
 - [ ] Enhance file upload validation and error handling
-- [ ] Add more unit tests
+- [ ] Add more unit tests to improve test coverage
 - [ ] Secure admin endpoints (project listings)
 - [ ] Create API to retrieve project details
 
 ### Testing
 
-This project felt more like building an MVP than just a simple task. The focus was on delivering the core functionality, so there wasn't enough time to write unit or integration tests, even though everything was manually tested multiple times. Automated tests, like unit and integration tests, are critical, and with more time, Cypress tests would also be added. Playing around with the Three.js camera setup took longer than expected, which reduced the time available for testing.
+This project felt more like building an MVP than just a simple task. The focus was on delivering the core functionality, so there wasn't enough time to write more unit or integration tests, even though everything was manually tested multiple times. Automated tests, like unit and integration tests, are critical, and with more time, Cypress tests would also be added. Playing around with the Three.js camera setup took longer than expected, which reduced the time available for testing.
+
+I spend almost an hour writing unit tests for the UI and backend. Due to time constraints, they lack integration tests. If time permits, consider adding Cypress E2E tests.
 
 ## Who wants to know more about me?
 
